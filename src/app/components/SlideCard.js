@@ -7,14 +7,13 @@ export default function SlideCard(props) {
   const {cardWidth, imgOnly} = props
   const {Title, Poster, Runtime} = props.film
   const navigation = useNavigation() 
+  const filmObj = props.film
 
   return (
     <TouchableOpacity 
       style={[styles.slideCard, {width: cardWidth}]} 
       activeOpacity={0.7}
-      onPress={() => navigation.navigate('MovieScreen', {
-        Title, Poster, Runtime
-      })}
+      onPress={() => navigation.navigate('MovieScreen', {...filmObj})}
     >
       <Image 
         source={{uri:Poster}} 

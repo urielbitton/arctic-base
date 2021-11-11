@@ -9,6 +9,7 @@ import { getMultipleMovies } from '../api/imdbAPI';
 import BottomOptions from '../components/BottomOptions';
 import Colors from '../utils/Colors';
 import MovieCatRow from '../components/MovieCatRow';
+import { bannerFilms, newReleasesFilms } from '../api/filmsAPI';
 
 export default function HomeScreen() {
  
@@ -18,24 +19,6 @@ export default function HomeScreen() {
   const [selectedPage, setSelectedPage] = useState(0);
   const [isSheetVisible, setIsSheetVisible] = useState(false)
   const navigation = useNavigation() 
-
-  const bannerArr = [
-    {id: 'tt1270797', title: 'Venom'},
-    {id: 'tt1160419', title: 'Dune'},
-    {id: 'tt4154796', title: 'Avengers: Endgame'},
-    {id: 'tt9032400', title: 'Eternals'},
-    {id: 'tt0293429', title: 'Mortal Kombat'},
-    {id: 'tt9376612', title: 'Shang Chi'},
-    {id: 'tt4633694', title: 'Spider Man: Into The Spider-Verse'},
-    {id: 'tt2382320', title: 'James Bond'},
-  ]
-  const newReleasesArr = [
-    {id: 'tt3480822', title: 'Black Widow'},
-    {id: 'tt8404256', title: 'Snake Eyes'},
-    {id: 'tt6264654', title: 'Free Guy'},
-    {id: 'tt6654210', title: 'Infinite'},
-    {id: 'tt10954652', title: 'Old'},
-  ]
 
   const list = [
     { title: 'My Account' },
@@ -50,8 +33,8 @@ export default function HomeScreen() {
   ]
 
   useEffect(() => {
-    getMultipleMovies(bannerArr, setBannerMovies)
-    getMultipleMovies(newReleasesArr, setNewReleases)
+    getMultipleMovies(bannerFilms, setBannerMovies)
+    getMultipleMovies(newReleasesFilms, setNewReleases)
   },[])
 
   useEffect(() => setPageTitle('Home'), [navigation]) 

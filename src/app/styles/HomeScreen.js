@@ -9,7 +9,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingVertical: 20,
-    paddingHorizontal: 30
+    paddingHorizontal: 30,
+    marginBottom: 20 
   },
   title: {
     fontSize: 30,

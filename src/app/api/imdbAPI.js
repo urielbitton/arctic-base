@@ -35,3 +35,19 @@ export const getMultipleMovies = (arrayOfIds, setResultsArr) => {
     })
   })
 }
+
+export const alternativeAPI = (imdbID, setResult) => {
+  var options = {
+    method: 'GET',
+    url: `https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/${imdbID}`,
+    headers: {
+      'x-rapidapi-host': 'imdb-internet-movie-database-unofficial.p.rapidapi.com',
+      'x-rapidapi-key': '8dfca300dbmshc9db1bd89959686p130e19jsneb01c198116e'
+    }
+  }
+  axios.request(options).then(res => {
+    setResult(res.data)
+  }).catch(err => {
+    console.error(err)
+  })
+}

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native'
-import { AntDesign, MaterialCommunityIcons  } from '@expo/vector-icons'
+import { AntDesign, FontAwesome  } from '@expo/vector-icons'
 import Colors from '../utils/Colors' 
 import { StoreContext } from '../store/context'
 
@@ -14,7 +14,7 @@ export default function BottomNav(props) {
     {title:'Home',icon:"home"},
     {title:'Categories',icon:'antdesign'},
     {title:'Search',icon:'search1'},
-    {title:'Favorites',icon:'hearto'} 
+    {title:'Saved',icon:'hearto', fa: true} 
   ])  
   const navlinksrow = navLinks?.map((link,i) => {
     return <TouchableOpacity 
@@ -22,7 +22,10 @@ export default function BottomNav(props) {
       onPress={() => {navigRef.current.navigate(link.title);setUpdate(prev => prev+1)}}
       key={i}
     >
-      <AntDesign name={link.icon} size={24} color={activeNav===link.title?"#fff":"rgba(255,255,255,0.6)"} />
+      {
+        link.fa ? <FontAwesome name="bookmark-o" size={24} color={activeNav===link.title?"#fff":"rgba(255,255,255,0.6)"} /> :
+        <AntDesign name={link.icon} size={24} color={activeNav===link.title?"#fff":"rgba(255,255,255,0.6)"} />
+      }
       <Text style={[styles.navLinkText, {color:activeNav===link.title?"#fff":"rgba(255,255,255,0.6)"}]}>{link.title}</Text>
     </TouchableOpacity>
   })

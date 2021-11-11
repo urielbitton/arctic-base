@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Movie DB App",
+    "githubUrl": "https://github.com/urielbitton/arctic-base"
   }
 }
