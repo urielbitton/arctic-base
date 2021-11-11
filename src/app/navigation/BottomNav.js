@@ -47,7 +47,9 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    borderTopColor: 'rgba(255,255,255,0.15)',
+    borderTopWidth: 0.2
   },
   navTab: {
     justifyContent: 'center',

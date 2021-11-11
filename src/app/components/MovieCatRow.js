@@ -17,7 +17,7 @@ export default function MovieCatRow(props) {
       <View style={styles.moviesRow}>
         <Slider 
           moviesSlide={moviesArr} 
-          height={200}
+          height={270}
           cardWidth={120}
           peek={30}
           pageMargin={-140}

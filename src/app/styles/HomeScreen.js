@@ -27,8 +27,10 @@ export const styles = StyleSheet.create({
     borderRadius: 50,
     overflow: 'hidden'
   },
-  actionRow: {
-    marginTop: 30,
-    width: '100%'
+  newReleasesRow: {
+    marginTop: 40,
+    marginBottom: 30,
+    width: '100%',
+    paddingBottom: 20
   }
 })

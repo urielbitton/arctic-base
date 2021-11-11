@@ -8,7 +8,7 @@ export default function Slider(props) {
     mode="card", cardWidth, imgOnly} = props
 
   const slideRender = moviesSlide?.map(film => {
-    return <SlideCard film={film} key={film.imdbID} cardWidth={cardWidth} imgOnly />
+    return <SlideCard film={film} cardWidth={cardWidth} imgOnly={imgOnly} key={film.imdbID} />
   })
 
   return (

@@ -80,7 +80,7 @@ export default function HomeScreen() {
         isSheetVisible={isSheetVisible}
         setIsSheetVisible={setIsSheetVisible}
       />
-      <View style={styles.actionRow}>
+      <View style={styles.newReleasesRow}>
         <MovieCatRow 
           moviesArr={newReleases}
           title="New Releases"
