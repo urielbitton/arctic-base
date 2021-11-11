@@ -19,10 +19,10 @@ export default function MovieCatRow(props) {
           moviesSlide={moviesArr} 
           height={270}
           cardWidth={120}
-          peek={30}
-          pageMargin={-140}
+          peek={135}
+          pageMargin={0}
         />
-      </View>
+      </View> 
     </View>
   )
 }
@@ -39,11 +39,11 @@ const styles = StyleSheet.create({
 
   },
   title: {
-    fontSize: 25,
+    fontSize: 19,
     color: '#fff'
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: 13,
     color: Colors.color
   }
 })

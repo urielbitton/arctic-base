@@ -54,8 +54,10 @@ export default function HomeScreen() {
         <Slider 
           moviesSlide={bannerMovies} 
           selectedPage={selectedPage}
-          height={550}
+          height={500}
           imgOnly
+          peek={65} 
+          pageMargin={15}
         />
       </View>
       <BottomOptions 

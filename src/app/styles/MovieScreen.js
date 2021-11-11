@@ -4,7 +4,7 @@ import Colors from '../utils/Colors';
 export const styles = StyleSheet.create({ 
   trailerContainer: {
     width: '100%',
-    height: 500,
+    height: 420,
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     paddingVertical: 20,
     zIndex: 20
   },
@@ -24,13 +24,14 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   pageTitle: {
-    fontSize: 24,
+    fontSize: 20,
     color: '#fff',
     marginLeft: 25,
-    fontWeight: '700'
+    fontWeight: '600',
+    maxWidth: 270
   },
   rating: {
-    fontSize: 23,
+    fontSize: 18,
     color: Colors.gold,
     fontWeight: '700',
     marginLeft: 6
@@ -50,8 +51,43 @@ export const styles = StyleSheet.create({
     zIndex: 10
   },
   coverImg: {
+    position: 'absolute',
     width: '100%',
     height: '100%',
     zIndex: 0
+  },
+  playCircle: {
+    width: 100,
+    height: 100,
+    borderRadius: 150,
+    borderWidth: 2,
+    borderColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  playIcon: {
+    zIndex: 100
+  },
+  briefInfoContainer: {
+    justifyContent: 'space-between',
+    paddingHorizontal: 30,
+    marginTop: 20
+  },
+  infoRow:  {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 15
+  },
+  infoLabel: {
+    color: Colors.color
+  },
+  infoText: {
+    color: '#fff'
+  },
+  plotText: {
+    color: Colors.gray,
+    fontSize: 13,
+    lineHeight: 20
   }
 })

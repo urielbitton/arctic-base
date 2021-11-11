@@ -38,10 +38,12 @@ const styles = StyleSheet.create({
   title: {
     zIndex: 10,
     color: '#f1f1f1',
-    marginTop: 7
+    marginTop: 7,
+    fontSize: 12
   },
   subtitle: {
     color: '#999',
-    marginTop: 5
+    marginTop: 4,
+    fontSize: 10
   }
 });
