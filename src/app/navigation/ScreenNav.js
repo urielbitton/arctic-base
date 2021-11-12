@@ -10,6 +10,7 @@ import firebase from 'firebase'
 import RegisterScreen from '../auth/RegisterScreen'
 import {styles} from '../styles/ScreenNav'
 import MovieScreen from '../screens/MovieScreen'
+import ActorScreen from '../screens/ActorScreen'
 
 export default function ScreenNav(props) {
 
@@ -32,6 +33,7 @@ export default function ScreenNav(props) {
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="MovieScreen" component={MovieScreen} />
+          <Stack.Screen name="ActorScreen" component={ActorScreen} />
         </Stack.Navigator>
         <BottomNav navigRef={navigRef} />
       </NavigationContainer>

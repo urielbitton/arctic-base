@@ -12,7 +12,7 @@ export default function Slider(props) {
     return (
       customCard ? 
       <SlideCardCustom film={film} cardWidth={cardWidth} imgOnly={imgOnly} key={film.imdbID} /> :
-      <SlideCard film={film} cardWidth={cardWidth} imgOnly={imgOnly} key={film.imdbID} /> 
+      <SlideCard film={film} cardWidth={cardWidth} imgOnly={imgOnly} key={film.imdb_id} /> 
     )
   })
 

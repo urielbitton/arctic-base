@@ -5,11 +5,11 @@ import { StoreContext } from '../store/context';
 import { useNavigation } from '@react-navigation/native'
 import Screen from '../components/Screen'
 import Slider from '../components/Slider'
-import { getMultipleMovies, supGetNewMovies, supGetUpcomingMovies } from '../api/imdbAPI';
+import { getMultipleMovies, getSupNewMovies, getSupNewSeries, getSupUpcomingMovies, getSupUpcomingSeries } from '../api/imdbAPI';
 import BottomOptions from '../components/BottomOptions';
 import Colors from '../utils/Colors';
 import MovieCatRow from '../components/MovieCatRow';
-import { bannerFilms, newReleasesFilms } from '../api/filmsAPI';
+import { bannerFilms } from '../api/filmsAPI';
 
 export default function HomeScreen() {
  
@@ -17,6 +17,8 @@ export default function HomeScreen() {
   const [bannerMovies, setBannerMovies] = useState([])
   const [newReleases, setNewReleases] = useState([])
   const [upcomingMovies, setUpcomingMovies] = useState([])
+  const [newSeries, setNewSeries] = useState([])
+  const [upcomingSeries, setUpcomingSeries] = useState([])
   const [selectedPage, setSelectedPage] = useState(0);
   const [isSheetVisible, setIsSheetVisible] = useState(false)
   const navigation = useNavigation() 
@@ -35,8 +37,10 @@ export default function HomeScreen() {
 
   useEffect(() => {
     getMultipleMovies(bannerFilms, setBannerMovies)
-    supGetNewMovies(setNewReleases)
-    supGetUpcomingMovies(setUpcomingMovies)
+    getSupNewMovies(setNewReleases)
+    getSupUpcomingMovies(setUpcomingMovies)
+    getSupNewSeries(setNewSeries)
+    getSupUpcomingSeries(setUpcomingSeries)
   },[])
 
   useEffect(() => setPageTitle('Home'), [navigation]) 
@@ -79,6 +83,20 @@ export default function HomeScreen() {
         <MovieCatRow 
           moviesArr={upcomingMovies.results}
           title="Upcoming Movies"
+          subtitle="View All"
+        />
+      </View>
+      <View style={styles.homeMoviesRow}>
+        <MovieCatRow 
+          moviesArr={newSeries.results}
+          title="New TV Shows"
+          subtitle="View All"
+        />
+      </View>
+      <View style={styles.homeMoviesRow}>
+        <MovieCatRow 
+          moviesArr={upcomingSeries.results}
+          title="Upcoming TV Shows"
           subtitle="View All"
         />
       </View>

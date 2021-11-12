@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Image, Text, View, TouchableOpacity, Linking } from 'react-native'
-import {alternativeAPI} from '../api/imdbAPI'
+import {getAltMovie} from '../api/imdbAPI'
 import YoutubePlayer from 'react-native-youtube-iframe';
 import Screen from '../components/Screen'
 import { styles } from '../styles/MovieScreen';
@@ -8,17 +8,26 @@ import { Fontisto, FontAwesome, Ionicons    } from '@expo/vector-icons';
 import Colors from '../utils/Colors';
 import {LinearGradient} from 'expo-linear-gradient'
 import { useNavigation } from '@react-navigation/native'
+import ActorBubble from '../components/ActorBubble';
+import CrewBubble from '../components/CrewBubble';
 
 export default function MovieScreen(props) {
 
-  const {imdbID, Title, Poster, imdbRating, Director, Genre, Runtime, Released, Plot} = props.route.params
+  const {imdbID, Title, Poster, imdbRating, Director, Genre, Runtime, Released, Plot, Writer} = props.route.params
   const [altFilm, setAltFilm] = useState({})
   const navigation = useNavigation() 
 
+  const actorsRender = altFilm?.cast?.slice(0,5).map(actor => {
+    return <ActorBubble actor={actor} key={actor.actor_id} />
+  })
+  const crewRender = Writer?.split(',')?.map(crew => {
+    return <CrewBubble crew={crew} subtitle="Writer" key={crew} />
+  })
+  
   useEffect(() => {
-    alternativeAPI(imdbID, setAltFilm)
-  },[imdbID])
-
+    getAltMovie(imdbID, setAltFilm)
+  },[imdbID]) 
+  
   return (
     <Screen>
       <View style={styles.trailerContainer}>
@@ -72,6 +81,21 @@ export default function MovieScreen(props) {
           <Text style={styles.infoText}>{Released??"N/A"}</Text>
         </View>
         <Text style={styles.plotText}>{Plot}</Text>
+      </View>
+      <View style={styles.seperatorContainer}>
+        <View style={styles.seperator}/>
+      </View>
+      <View style={styles.actorsContainer}>
+        <Text style={styles.actorTitle}>Actors</Text>
+        {actorsRender}
+      </View>
+      <View style={styles.actorsContainer}>
+        <Text style={styles.actorTitle}>Director</Text>
+        <CrewBubble crew={Director} subtitle="Director" />
+      </View>
+      <View style={styles.actorsContainer}>
+        <Text style={styles.actorTitle}>Writers</Text>
+        {crewRender}
       </View>
     </Screen>
   )

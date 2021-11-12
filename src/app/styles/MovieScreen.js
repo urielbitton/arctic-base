@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
     maxWidth: 270
   },
   rating: {
-    fontSize: 18,
+    fontSize: 16,
     color: Colors.gold,
     fontWeight: '700',
     marginLeft: 6
@@ -88,6 +88,32 @@ export const styles = StyleSheet.create({
   plotText: {
     color: Colors.gray,
     fontSize: 13,
-    lineHeight: 20
+    lineHeight: 20,
+    marginBottom: 20
+  },
+  seperatorContainer: {
+    width: '100%',
+    paddingHorizontal: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 10
+  },
+  seperator: {
+    width: '100%',
+    height: 1,
+    backgroundColor: 'rgba(255,255,255,0.1)'
+  },
+  actorsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: '100%',
+    marginBottom: 20,
+    paddingHorizontal: 30
+  },
+  actorTitle: {
+    color: Colors.color,
+    fontSize: 17,
+    flexBasis: '100%',
+    marginBottom: 20
   }
 })
