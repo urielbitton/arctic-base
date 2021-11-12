@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     borderRadius: 50,
     overflow: 'hidden'
   },
-  newReleasesRow: {
+  homeMoviesRow: {
     marginTop: 40,
     marginBottom: 30,
     width: '100%',

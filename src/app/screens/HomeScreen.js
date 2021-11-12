@@ -5,7 +5,7 @@ import { StoreContext } from '../store/context';
 import { useNavigation } from '@react-navigation/native'
 import Screen from '../components/Screen'
 import Slider from '../components/Slider'
-import { getMultipleMovies } from '../api/imdbAPI';
+import { getMultipleMovies, supGetNewMovies, supGetUpcomingMovies } from '../api/imdbAPI';
 import BottomOptions from '../components/BottomOptions';
 import Colors from '../utils/Colors';
 import MovieCatRow from '../components/MovieCatRow';
@@ -16,6 +16,7 @@ export default function HomeScreen() {
   const {setPageTitle, user} = useContext(StoreContext)
   const [bannerMovies, setBannerMovies] = useState([])
   const [newReleases, setNewReleases] = useState([])
+  const [upcomingMovies, setUpcomingMovies] = useState([])
   const [selectedPage, setSelectedPage] = useState(0);
   const [isSheetVisible, setIsSheetVisible] = useState(false)
   const navigation = useNavigation() 
@@ -34,7 +35,8 @@ export default function HomeScreen() {
 
   useEffect(() => {
     getMultipleMovies(bannerFilms, setBannerMovies)
-    getMultipleMovies(newReleasesFilms, setNewReleases)
+    supGetNewMovies(setNewReleases)
+    supGetUpcomingMovies(setUpcomingMovies)
   },[])
 
   useEffect(() => setPageTitle('Home'), [navigation]) 
@@ -58,6 +60,7 @@ export default function HomeScreen() {
           imgOnly
           peek={65} 
           pageMargin={15}
+          customCard
         />
       </View>
       <BottomOptions 
@@ -65,10 +68,17 @@ export default function HomeScreen() {
         isSheetVisible={isSheetVisible}
         setIsSheetVisible={setIsSheetVisible}
       />
-      <View style={styles.newReleasesRow}>
+      <View style={styles.homeMoviesRow}>
         <MovieCatRow 
-          moviesArr={newReleases}
+          moviesArr={newReleases.results}
           title="New Releases"
+          subtitle="View All"
+        />
+      </View>
+      <View style={styles.homeMoviesRow}>
+        <MovieCatRow 
+          moviesArr={upcomingMovies.results}
+          title="Upcoming Movies"
           subtitle="View All"
         />
       </View>

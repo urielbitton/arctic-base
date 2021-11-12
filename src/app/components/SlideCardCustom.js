@@ -1,32 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { getOneMovie } from '../api/imdbAPI'
 
 export default function SlideCard(props) {
 
   const {cardWidth, imgOnly} = props
-  const {imdb_id} = props.film
-  const [movie, setMovie] = useState({})
+  const {Title, Poster, Runtime} = props.film
   const navigation = useNavigation() 
-
-  useEffect(() => {
-    getOneMovie(imdb_id, setMovie)
-  },[imdb_id])
+  const filmObj = props.film
 
   return (
     <TouchableOpacity 
       style={[styles.slideCard, {width: cardWidth}]} 
       activeOpacity={0.7}
-      onPress={() => navigation.navigate('MovieScreen', movie)}
+      onPress={() => navigation.navigate('MovieScreen', {...filmObj})}
     >
       <Image 
-        source={{uri:movie?.Poster}} 
+        source={{uri:Poster}} 
         style={[styles.posterImg, {height: imgOnly ? "100%" : 200}]} 
       />
       <View style={{display: imgOnly ? "none" : "flex"}}>
-        <Text style={styles.title} numberOfLines={1}>{movie?.Title}</Text>
-        <Text style={styles.subtitle}>{movie?.Runtime}</Text>
+        <Text style={styles.title} numberOfLines={1}>{Title}</Text>
+        <Text style={styles.subtitle}>{Runtime}</Text>
       </View>
     </TouchableOpacity>
   )

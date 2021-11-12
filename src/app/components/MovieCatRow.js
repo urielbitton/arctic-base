@@ -6,7 +6,7 @@ import Slider from './Slider';
 
 export default function MovieCatRow(props) {
   
-  const {moviesArr, title, subtitle} = props
+  const {moviesArr, title, subtitle, customCard} = props
   
   return (
     <View style={styles.rowContainer}>
@@ -21,6 +21,7 @@ export default function MovieCatRow(props) {
           cardWidth={120}
           peek={135}
           pageMargin={0}
+          customCard={customCard}
         />
       </View> 
     </View>
