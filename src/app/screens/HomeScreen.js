@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Text, View, Image, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 import { styles } from '../styles/HomeScreen';
 import { StoreContext } from '../store/context';
 import { useNavigation } from '@react-navigation/native'
@@ -10,6 +10,7 @@ import BottomOptions from '../components/BottomOptions';
 import Colors from '../utils/Colors';
 import MovieCatRow from '../components/MovieCatRow';
 import { bannerFilms } from '../api/filmsAPI';
+import PageBar from '../components/PageBar';
 
 export default function HomeScreen() {
  
@@ -48,13 +49,11 @@ export default function HomeScreen() {
   return (
     <Screen>
       <View style={styles.exploreHeader}>
-        <View>
-          <Text style={styles.title}>Explore</Text>
-          <Text style={styles.subtitle}>Watch the latest releases here.</Text>
-        </View>
-        <TouchableOpacity onPress={() => setIsSheetVisible(true)} style={styles.profilePicContainer} activeOpacity={0.8}>
-          <Image source={{uri:'https://i.imgur.com/nwNCgta.jpg'}} style={{width:'100%',height:'100%'}}/>
-        </TouchableOpacity>
+        <PageBar 
+          title="Explore"
+          subtitle="Watch the latest releases here."
+          setIsSheetVisible={setIsSheetVisible}
+        />
       </View>
       <View style={styles.sliderContainer}>
         <Slider 

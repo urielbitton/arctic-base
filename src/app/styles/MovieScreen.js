@@ -76,14 +76,15 @@ export const styles = StyleSheet.create({
   infoRow:  {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
     marginBottom: 15
   },
   infoLabel: {
     color: Colors.color
   },
   infoText: {
-    color: '#fff'
+    color: '#fff',
+    maxWidth: 220,
+    textAlign: 'right'
   },
   plotText: {
     color: Colors.gray,

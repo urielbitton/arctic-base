@@ -13,7 +13,7 @@ export default function BottomNav(props) {
   const [navLinks, setNavLinks] = useState([
     {title:'Home',icon:"home"},
     {title:'Categories',icon:'antdesign'},
-    {title:'Search',icon:'search1'},
+    {title:'SearchScreen',icon:'search1'},
     {title:'Saved',icon:'hearto', fa: true} 
   ])  
   const navlinksrow = navLinks?.map((link,i) => {

@@ -13,7 +13,9 @@ import CrewBubble from '../components/CrewBubble';
 
 export default function MovieScreen(props) {
 
-  const {imdbID, Title, Poster, imdbRating, Director, Genre, Runtime, Released, Plot, Writer} = props.route.params
+  const {imdbID, Title, Poster, imdbRating, Director, Genre, Runtime, Released, 
+    Plot, Writer, BoxOffice, Awards, Rated, Production, Year, Country, imdbVotes, 
+    Website, DVD} = props.route.params
   const [altFilm, setAltFilm] = useState({})
   const navigation = useNavigation() 
 
@@ -22,6 +24,36 @@ export default function MovieScreen(props) {
   })
   const crewRender = Writer?.split(',')?.map(crew => {
     return <CrewBubble crew={crew} subtitle="Writer" key={crew} />
+  })
+
+  const infoArray = [
+    {label: 'Director', text: Director},
+    {label: 'Genre', text: Genre},
+    {label: 'Runtime', text: Runtime},
+    {label: 'Release Date', text: Released},
+    {label: 'Box Office', text: BoxOffice},
+    {label: 'Awards & Nominations', text: Awards},
+    {label: 'Production', text: Production},
+    {label: 'Rating', text: Rated},
+    {label: 'Year', text: Year},
+    {label: 'Country', text: Country},
+    {label: 'IMDB Rating', text: imdbRating},
+    {label: 'IMDB Votes', text: imdbVotes},
+    {label: 'DVD Release', text: DVD},
+    {label: 'Website', text: Website},
+  ]
+
+  const infoRender1 = infoArray?.slice(0,4).map(info => {
+    return <View style={styles.infoRow}>
+      <Text style={styles.infoLabel}>{info.label}</Text>
+      <Text style={styles.infoText}>{info.text ?? "N/A"}</Text>
+    </View>
+  })
+  const infoRender2 = infoArray?.slice(4).map(info => {
+    return <View style={styles.infoRow}>
+      <Text style={styles.infoLabel}>{info.label}</Text>
+      <Text style={styles.infoText}>{info.text ?? "N/A"}</Text>
+    </View>
   })
   
   useEffect(() => {
@@ -64,22 +96,7 @@ export default function MovieScreen(props) {
         </LinearGradient>
       </View>
       <View style={styles.briefInfoContainer}>
-        <View style={styles.infoRow}>
-          <Text style={styles.infoLabel}>Director</Text>
-          <Text style={styles.infoText}>{Director}</Text>
-        </View>
-        <View style={styles.infoRow}>
-          <Text style={styles.infoLabel}>Genre</Text>
-          <Text style={styles.infoText}>{Genre}</Text>
-        </View>
-        <View style={styles.infoRow}>
-          <Text style={styles.infoLabel}>Time</Text>
-          <Text style={styles.infoText}>{Runtime}</Text>
-        </View>
-        <View style={styles.infoRow}>
-          <Text style={styles.infoLabel}>Release Date</Text>
-          <Text style={styles.infoText}>{Released??"N/A"}</Text>
-        </View>
+        {infoRender1}
         <Text style={styles.plotText}>{Plot}</Text>
       </View>
       <View style={styles.seperatorContainer}>
@@ -96,6 +113,10 @@ export default function MovieScreen(props) {
       <View style={styles.actorsContainer}>
         <Text style={styles.actorTitle}>Writers</Text>
         {crewRender}
+      </View>
+      <View style={styles.briefInfoContainer}>
+        <Text style={styles.actorTitle}>More Info</Text>
+        {infoRender2}
       </View>
     </Screen>
   )

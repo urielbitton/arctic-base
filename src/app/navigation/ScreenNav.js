@@ -11,6 +11,7 @@ import RegisterScreen from '../auth/RegisterScreen'
 import {styles} from '../styles/ScreenNav'
 import MovieScreen from '../screens/MovieScreen'
 import ActorScreen from '../screens/ActorScreen'
+import SearchScreen from '../screens/SearchScreen'
 
 export default function ScreenNav(props) {
 
@@ -34,6 +35,7 @@ export default function ScreenNav(props) {
           <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="MovieScreen" component={MovieScreen} />
           <Stack.Screen name="ActorScreen" component={ActorScreen} />
+          <Stack.Screen name="SearchScreen" component={SearchScreen} />
         </Stack.Navigator>
         <BottomNav navigRef={navigRef} />
       </NavigationContainer>
