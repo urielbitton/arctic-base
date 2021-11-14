@@ -4,9 +4,10 @@ import { StyleSheet } from 'react-native';
 import Colors from '../utils/Colors';
 import Slider from './Slider';
 
-export default function MovieCatRow(props) {
+export default function SliderRow(props) {
   
-  const {moviesArr, title, subtitle, customCard} = props
+  const {slidesArr, peek, pageMargin, title, subtitle, customCard, 
+    searchCard, actorCard, coverImg, cardWidth=120, cardHeight, height=270} = props
   
   return (
     <View style={styles.rowContainer}>
@@ -16,12 +17,16 @@ export default function MovieCatRow(props) {
       </View>
       <View style={styles.moviesRow}>
         <Slider 
-          moviesSlide={moviesArr} 
-          height={270}
-          cardWidth={120}
-          peek={135}
-          pageMargin={0}
+          slide={slidesArr} 
+          height={height}
+          cardWidth={cardWidth}
+          cardHeight={cardHeight}
+          peek={peek??110}
+          pageMargin={pageMargin??0}
           customCard={customCard}
+          coverImg={coverImg}
+          searchCard={searchCard}
+          actorCard={actorCard}
         />
       </View> 
     </View>
@@ -30,7 +35,7 @@ export default function MovieCatRow(props) {
 
 const styles = StyleSheet.create({ 
   header: {
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     marginBottom: 15,
     flexDirection: 'row',
     justifyContent: 'space-between',

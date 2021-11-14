@@ -8,7 +8,7 @@ import Slider from '../components/Slider'
 import { getMultipleMovies, getSupNewMovies, getSupNewSeries, getSupUpcomingMovies, getSupUpcomingSeries } from '../api/imdbAPI';
 import BottomOptions from '../components/BottomOptions';
 import Colors from '../utils/Colors';
-import MovieCatRow from '../components/MovieCatRow';
+import SliderRow from '../components/SliderRow';
 import { bannerFilms } from '../api/filmsAPI';
 import PageBar from '../components/PageBar';
 
@@ -57,7 +57,7 @@ export default function HomeScreen() {
       </View>
       <View style={styles.sliderContainer}>
         <Slider 
-          moviesSlide={bannerMovies} 
+          slide={bannerMovies} 
           selectedPage={selectedPage}
           height={500}
           imgOnly
@@ -72,29 +72,29 @@ export default function HomeScreen() {
         setIsSheetVisible={setIsSheetVisible}
       />
       <View style={styles.homeMoviesRow}>
-        <MovieCatRow 
-          moviesArr={newReleases.results}
+        <SliderRow 
+          slidesArr={newReleases.results}
           title="New Releases"
           subtitle="View All"
         />
       </View>
       <View style={styles.homeMoviesRow}>
-        <MovieCatRow 
-          moviesArr={upcomingMovies.results}
+        <SliderRow 
+          slidesArr={upcomingMovies.results}
           title="Upcoming Movies"
           subtitle="View All"
         />
       </View>
       <View style={styles.homeMoviesRow}>
-        <MovieCatRow 
-          moviesArr={newSeries.results}
+        <SliderRow 
+          slidesArr={newSeries.results}
           title="New TV Shows"
           subtitle="View All"
         />
       </View>
       <View style={styles.homeMoviesRow}>
-        <MovieCatRow 
-          moviesArr={upcomingSeries.results}
+        <SliderRow 
+          slidesArr={upcomingSeries.results}
           title="Upcoming TV Shows"
           subtitle="View All"
         />

@@ -1,13 +1,17 @@
 import { StyleSheet } from 'react-native'
+import Colors from '../utils/Colors'
 
 export const styles = StyleSheet.create({ 
   inputFlexCont: {
-    paddingHorizontal: 30,
+    paddingHorizontal: 10,
+    marginBottom: 20
   },
   inputContainer: {
-    backgroundColor: 'transparent'
+    backgroundColor: Colors.inputGray,
+    borderColor: 'transparent',
+    height: 53
   },
   inputStyle: {
-    backgroundColor: 'transparent'
+    color: '#fff'
   }
 })

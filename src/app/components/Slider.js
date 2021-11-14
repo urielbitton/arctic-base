@@ -2,17 +2,23 @@ import React from 'react';
 import PageSlider from '@pietile-native-kit/page-slider';
 import SlideCard from './SlideCard';
 import SlideCardCustom from './SlideCardCustom'
+import SearchBox from './SearchBox';
+import ActorCard from './ActorCard';
 
 export default function Slider(props) {
   
-  const {moviesSlide, selectedPage=0, width='100%', height, peek=65, pageMargin=15, 
-    mode="card", cardWidth, imgOnly, customCard} = props
+  const {slide, selectedPage=0, width='100%', height, peek=65, pageMargin=15, 
+    mode="card", cardWidth, cardHeight, imgOnly, customCard, searchCard, coverImg, actorCard} = props
 
-  const slideRender = moviesSlide?.map(film => {
+  const slideRender = slide?.map(el => {
     return (
+      searchCard ?
+        <SearchBox coverImg={coverImg} genre={el.genre} key={el.genre}/> :
       customCard ? 
-      <SlideCardCustom film={film} cardWidth={cardWidth} imgOnly={imgOnly} key={film.imdbID} /> :
-      <SlideCard film={film} cardWidth={cardWidth} imgOnly={imgOnly} key={film.imdb_id} /> 
+        <SlideCardCustom film={el} cardWidth={cardWidth} imgOnly={imgOnly} key={el.imdbID} /> :
+      actorCard ?
+        <ActorCard actor={el} cardWidth={cardWidth} cardHeight={cardHeight} key={el.imdb_id}/> :
+        <SlideCard film={el} cardWidth={cardWidth} imgOnly={imgOnly} key={el.imdb_id} /> 
     )
   })
 

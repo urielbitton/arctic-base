@@ -44,7 +44,7 @@ export const getMultipleMovies = (arrayOfIds, setResultsArr) => {
 }
 
 export const getAltMovie = (imdbID, setResult) => {
-  var options = {
+  const options = {
     method: 'GET',
     url: `https://imdb-internet-movie-database-unofficial.p.rapidapi.com/film/${imdbID}`,
     headers: altHeaders
@@ -57,7 +57,7 @@ export const getAltMovie = (imdbID, setResult) => {
 }
 
 export const getSupMoviesByGenre = (genre, setResults, limit='20') => {
-  var options = {
+  const options = {
     method: 'GET',
     url: `https://data-imdb1.p.rapidapi.com/movie/byGen/${genre}/`,
     params: {page_size: limit},
@@ -71,7 +71,7 @@ export const getSupMoviesByGenre = (genre, setResults, limit='20') => {
 }
 
 export const getSupUpcomingMovies = (setResults, limit='20') => {
-  var options = {
+  const options = {
     method: 'GET',
     url: 'https://data-imdb1.p.rapidapi.com/movie/order/upcoming/',
     params: {page_size: limit},
@@ -85,7 +85,7 @@ export const getSupUpcomingMovies = (setResults, limit='20') => {
 }
 
 export const getSupNewMovies = (setResults, limit='20') => {
-  var options = {
+  const options = {
     method: 'GET',
     url: `https://data-imdb1.p.rapidapi.com/movie/byYear/${new Date().getFullYear()}/`,
     params: {page_size: '50'},
@@ -99,7 +99,7 @@ export const getSupNewMovies = (setResults, limit='20') => {
 }
 
 export const getSupUpcomingSeries = (setResults, limit='20') => {
-  var options = {
+  const options = {
     method: 'GET',
     url: 'https://data-imdb1.p.rapidapi.com/series/order/upcoming/',
     params: {page_size: limit},
@@ -113,7 +113,7 @@ export const getSupUpcomingSeries = (setResults, limit='20') => {
 }
 
 export const getSupNewSeries = (setResults, limit='20') => {
-  var options = {
+  const options = {
     method: 'GET',
     url: `https://data-imdb1.p.rapidapi.com/series/byYear/${new Date().getFullYear()}/`,
     params: {page_size: '50'},
@@ -127,7 +127,7 @@ export const getSupNewSeries = (setResults, limit='20') => {
 }
 
 export const getActorById = (actorId, setResult) => {
-  var options = {
+  const options = {
     method: 'GET',
     url: `https://data-imdb1.p.rapidapi.com/actor/id/${actorId}/`,
     headers: superAPIHeaders
@@ -139,14 +139,42 @@ export const getActorById = (actorId, setResult) => {
   })
 }
 
+export const getMultipleActors = (arrayOfIds, setResultsArr) => {
+  arrayOfIds.forEach(el => {
+    const options = {
+      method: 'GET',
+      url: `https://data-imdb1.p.rapidapi.com/actor/id/${el.id}/`,
+      headers: superAPIHeaders
+    };
+    axios.request(options).then(res => {
+      setResultsArr(prev => [...prev, res.data.results])
+    }).catch(err => {
+      console.error(err)
+    })
+  })
+}
+
 export const getActorIdByName = (name, setResult) => {
-  var options = {
+  const options = {
     method: 'GET',
     url: `https://data-imdb1.p.rapidapi.com/actor/imdb_id_byName/${name}/`,
     headers: superAPIHeaders
   };
   axios.request(options).then(res => {
     setResult(res.data.results[0].imdb_id)
+  }).catch(err => {
+    console.error(err)
+  })
+}
+
+export const getAllGenres = (setResult) => {
+  const options = {
+    method: 'GET',
+    url: 'https://data-imdb1.p.rapidapi.com/genres/',
+    headers: superAPIHeaders
+  };
+  axios.request(options).then(res => {
+    setResult(res.data.results)
   }).catch(err => {
     console.error(err)
   })

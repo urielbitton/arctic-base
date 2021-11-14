@@ -3,10 +3,10 @@ import { TouchableOpacity, StyleSheet, View, Text, Image } from 'react-native'
 
 export default function PageBar(props) {
 
-  const {title, subtitle, setIsSheetVisible} = props
+  const {title, subtitle, setIsSheetVisible, paddingBottom=20} = props
 
   return (
-    <View style={styles.pageBar}>
+    <View style={[styles.pageBar, {paddingBottom}]}>
       <View>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.subtitle}>{subtitle}</Text>
@@ -22,9 +22,9 @@ const styles = StyleSheet.create({
   pageBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginTop: 20,
     alignItems: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     marginBottom: 20 
   },
   title: {

@@ -15,3 +15,16 @@ export const newReleasesFilms = [
   {id: 'tt6654210', title: 'Infinite'},
   {id: 'tt10954652', title: 'Old'},
 ]
+
+export const searchActors = [
+  {id: 'nm0000093'},
+  {id: 'nm0001401'},
+  {id: 'nm0000375'},
+  {id: 'nm0000134'},
+  {id: 'nm1165110'},
+  {id: 'nm0362766'},
+  {id: 'nm0000158'},
+  {id: 'nm0000136'},
+  {id: 'nm0000701'},
+  {id: 'nm0000138'},
+]
