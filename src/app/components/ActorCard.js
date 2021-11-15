@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { getActorById } from '../api/imdbAPI'
 
 export default function ActorCard(props) {
 
@@ -27,9 +26,6 @@ export default function ActorCard(props) {
 }
 
 const styles = StyleSheet.create({
-  slideCard: {
-    
-  },
   img: {
     width: '100%',
     borderRadius: 10

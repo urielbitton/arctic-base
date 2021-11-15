@@ -1,3 +1,6 @@
+const date = new Date()
+const thisYear = date.getFullYear()
+
 export const bannerFilms = [
   {id: 'tt1270797', title: 'Venom'},
   {id: 'tt1160419', title: 'Dune'},
@@ -27,4 +30,17 @@ export const searchActors = [
   {id: 'nm0000136'},
   {id: 'nm0000701'},
   {id: 'nm0000138'},
+]
+
+export const searchYears = [
+  {year: thisYear},
+  {year: thisYear-1},
+  {year: thisYear-2},
+  {year: thisYear-3},
+  {year: thisYear-4},
+  {year: thisYear-5},
+  {year: thisYear-6},
+  {year: thisYear-7},
+  {year: thisYear-8},
+  {year: thisYear-9}
 ]

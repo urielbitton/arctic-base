@@ -13,5 +13,8 @@ export const styles = StyleSheet.create({
   },
   inputStyle: {
     color: '#fff'
+  },
+  searchResults: {
+    height: 600
   }
 })

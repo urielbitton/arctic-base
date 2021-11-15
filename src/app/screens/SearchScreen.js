@@ -9,7 +9,8 @@ import { AntDesign } from '@expo/vector-icons';
 import SliderRow from '../components/SliderRow'
 import { getAllGenres, getMultipleActors } from '../api/imdbAPI';
 import cinemaImg from '../assets/imgs/cinema.jpg'
-import { searchActors } from '../api/filmsAPI'
+import yearsImg from '../assets/imgs/years.jpg'
+import { searchActors, searchYears } from '../api/filmsAPI'
 
 export default function SearchScreen() {
 
@@ -51,26 +52,41 @@ export default function SearchScreen() {
           />
         </View>
       </View>
-      <SliderRow 
-        slidesArr={allGenres}
-        title="By Genre"
-        subtitle="View All"
-        coverImg={cinemaImg}
-        searchCard
-        peek={70}
-        pageMargin={0}
-        height={130}
-      />
-      <SliderRow 
-        slidesArr={allActors}
-        title="By Actor"
-        subtitle="View All"
-        peek={120}
-        pageMargin={0}
-        actorCard
-        cardHeight={100}
-        cardWidth={100}
-      />
+      <View style={[styles.prefillContainer, {display: keyword.length ? 'none' : 'flex'}]}>
+        <SliderRow 
+          slidesArr={allGenres}
+          title="By Genre"
+          subtitle="View All"
+          coverImg={cinemaImg}
+          searchCard
+          peek={70}
+          pageMargin={0}
+          height={130}
+        />
+        <SliderRow 
+          slidesArr={allActors}
+          title="By Actor"
+          subtitle="View All"
+          peek={120}
+          pageMargin={0}
+          actorCard
+          height={150}
+          cardHeight={100}
+          cardWidth={100}
+        />
+        <SliderRow 
+          slidesArr={allActors}
+          title="By Year"
+          subtitle="View All"
+          coverImg={yearsImg}
+          peek={70}
+          pageMargin={0}
+          height={130}
+          searchCard
+          slidesArr={searchYears}
+        />
+      </View>
+      <View style={styles.searchResults}></View>
     </Screen>
   )
 }

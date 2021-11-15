@@ -4,13 +4,13 @@ import Colors from '../utils/Colors'
 
 export default function SearchBox(props) {
 
-  const {coverImg, genre} = props
+  const {coverImg, genre, year} = props
 
   return (
     <TouchableOpacity style={styles.searchBox} activeOpacity={0.75}>
       <Image source={coverImg} style={styles.coverImg}/>
       <View style={styles.cover}></View>
-      <Text style={styles.title}>{genre}</Text>
+      <Text style={styles.title}>{genre??year}</Text>
       <Text style={styles.overlay}>{genre}</Text>
     </TouchableOpacity>
   )
