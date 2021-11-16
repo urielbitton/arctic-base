@@ -15,6 +15,6 @@ export const styles = StyleSheet.create({
     color: '#fff'
   },
   searchResults: {
-    height: 600
+    
   }
 })

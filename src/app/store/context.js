@@ -1,4 +1,4 @@
-import React, {createContext, useEffect, useState} from 'react'
+import React, {createContext, useEffect, useRef, useState} from 'react'
 import firebase from 'firebase'
 import {db} from '../firebase/Fire'
 
@@ -12,6 +12,7 @@ const StoreContextProvider = (props) => {
   const [aUser, setAUser] = useState({})
   const [pageTitle, setPageTitle] = useState('Discover')
   const [logAuth, setLogAuth] = useState(true)
+  const scrollTopRef= useRef()
 
   useEffect(() => {
     if(user) {
@@ -24,7 +25,7 @@ const StoreContextProvider = (props) => {
   return (
     <StoreContext.Provider value={{
       activeNav, setActiveNav, user, myUser, setMyUser, aUser, setAUser, pageTitle, setPageTitle,
-      logAuth, setLogAuth
+      logAuth, setLogAuth, scrollTopRef
     }}>
       {props.children}
     </StoreContext.Provider>

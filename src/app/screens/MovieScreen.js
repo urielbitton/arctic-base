@@ -103,19 +103,19 @@ export default function MovieScreen(props) {
         <View style={styles.seperator}/>
       </View>
       <View style={styles.actorsContainer}>
-        <Text style={styles.actorTitle}>Actors</Text>
+        <Text style={styles.rowTitle}>Actors</Text>
         {actorsRender}
       </View>
       <View style={styles.actorsContainer}>
-        <Text style={styles.actorTitle}>Director</Text>
+        <Text style={styles.rowTitle}>Director</Text>
         <CrewBubble crew={Director} subtitle="Director" />
       </View>
       <View style={styles.actorsContainer}>
-        <Text style={styles.actorTitle}>Writers</Text>
+        <Text style={styles.rowTitle}>Writers</Text>
         {crewRender}
       </View>
       <View style={styles.briefInfoContainer}>
-        <Text style={styles.actorTitle}>More Info</Text>
+        <Text style={[styles.rowTitle, {paddingHorizontal: 0, marginBottom: 35}]}>More Info</Text>
         {infoRender2}
       </View>
     </Screen>

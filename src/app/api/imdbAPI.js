@@ -179,3 +179,16 @@ export const getAllGenres = (setResult) => {
     console.error(err)
   })
 }
+
+export const mainSearch = (keyword, setResults) => {
+  const options = {
+    method: 'GET',
+    url: `https://data-imdb1.p.rapidapi.com/movie/imdb_id/byTitle/${keyword}/`,
+    headers: superAPIHeaders
+  };
+  axios.request(options).then(res => {
+    setResults(res.data.results)
+  }).catch(err => {
+    console.error(err)
+  })
+}

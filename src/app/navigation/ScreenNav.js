@@ -35,7 +35,7 @@ export default function ScreenNav(props) {
           <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="MovieScreen" component={MovieScreen} />
           <Stack.Screen name="ActorScreen" component={ActorScreen} />
-          <Stack.Screen name="SearchScreen" component={SearchScreen} />
+          <Stack.Screen name="Search" component={SearchScreen} />
         </Stack.Navigator>
         <BottomNav navigRef={navigRef} />
       </NavigationContainer>

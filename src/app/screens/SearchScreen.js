@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import SearchBar from 'react-native-elements/dist/searchbar/SearchBar-ios';
 import PageBar from '../components/PageBar';
 import Screen from '../components/Screen'
@@ -7,31 +7,41 @@ import { styles } from '../styles/SearchScreen';
 import Colors from '../utils/Colors';
 import { AntDesign } from '@expo/vector-icons';
 import SliderRow from '../components/SliderRow'
-import { getAllGenres, getMultipleActors } from '../api/imdbAPI';
+import { getAllGenres, getMultipleActors, mainSearch } from '../api/imdbAPI';
 import cinemaImg from '../assets/imgs/cinema.jpg'
 import yearsImg from '../assets/imgs/years.jpg'
 import { searchActors, searchYears } from '../api/filmsAPI'
+import SearchCard from '../components/SearchCard';
 
 export default function SearchScreen() {
 
-  const [resultsFound, setResultsFound] = useState('3,045,479')
+  const [searchResults, setSearchResults] = useState([])
   const [isSheetVisible, setIsSheetVisible] = useState(false)
   const [keyword, setKeyword] = useState('')
-  const [submit, setSubmit] = useState('')
+  const [submitKeyword, setSubmitKeyword] = useState('')
   const [allGenres, setAllGenres] = useState([])
   const [allActors, setAllActors] = useState([])
+
+  const searchResultsRender = searchResults?.map(res => {
+    return <SearchCard result={res} key={res.imdb_id} />
+  })
 
   useEffect(() => {
     getAllGenres(setAllGenres)
     getMultipleActors(searchActors, setAllActors)
   },[])
 
+  useEffect(() => {
+    if(submitKeyword.length)
+      mainSearch(submitKeyword, setSearchResults)
+  },[submitKeyword])
+
   return (
     <Screen>
       <View style={styles.searchHeader}>
         <PageBar
           title="Search"
-          subtitle={resultsFound + " records available"}
+          subtitle={(searchResults.length ?? '3,045,479') + " records available"}
           setIsSheetVisible={setIsSheetVisible}
           paddingBottom={0}
         />
@@ -44,15 +54,16 @@ export default function SearchScreen() {
             onChangeText={(text) => setKeyword(text)}
             value={keyword}
             cancelButtonTitle=""
-            onSubmitEditing={() => setSubmit(keyword)}
-            onClear={() => setSubmit('')}
+            onSubmitEditing={() => setSubmitKeyword(keyword)}
+            onClear={() => {setSubmitKeyword('');setSearchResults([])}}
+            onCancel={() => {setSubmitKeyword('');;setSearchResults([])}}
             searchIcon={
               <AntDesign name="search1" size={21} color={Colors.gray} style={{paddingLeft: 10}} />
             }
           />
         </View>
       </View>
-      <View style={[styles.prefillContainer, {display: keyword.length ? 'none' : 'flex'}]}>
+      <View style={[styles.prefillContainer, {display: submitKeyword.length ? 'none' : 'flex'}]}>
         <SliderRow 
           slidesArr={allGenres}
           title="By Genre"
@@ -86,7 +97,9 @@ export default function SearchScreen() {
           slidesArr={searchYears}
         />
       </View>
-      <View style={styles.searchResults}></View>
+      <View style={styles.resultsContainer}>
+        {searchResultsRender}
+      </View>
     </Screen>
   )
 }

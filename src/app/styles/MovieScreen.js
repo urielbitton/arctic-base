@@ -70,7 +70,7 @@ export const styles = StyleSheet.create({
   },
   briefInfoContainer: {
     justifyContent: 'space-between',
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     marginTop: 20
   },
   infoRow:  {
@@ -94,7 +94,7 @@ export const styles = StyleSheet.create({
   },
   seperatorContainer: {
     width: '100%',
-    paddingHorizontal: 30,
+    paddingHorizontal: 20,
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: 10
@@ -109,9 +109,10 @@ export const styles = StyleSheet.create({
     flexWrap: 'wrap',
     width: '100%',
     marginBottom: 20,
-    paddingHorizontal: 30
+    paddingHorizontal: 10
   },
-  actorTitle: {
+  rowTitle: {
+    paddingHorizontal: 10,
     color: Colors.color,
     fontSize: 17,
     flexBasis: '100%',

@@ -6,20 +6,24 @@ import { StoreContext } from '../store/context'
 
 export default function BottomNav(props) {
 
-  const {activeNav, setActiveNav} = useContext(StoreContext)
+  const {activeNav, setActiveNav, scrollTopRef} = useContext(StoreContext)
   const {navigRef} = props
   const [update, setUpdate] = useState(0)
 
   const [navLinks, setNavLinks] = useState([
     {title:'Home',icon:"home"},
     {title:'Categories',icon:'antdesign'},
-    {title:'SearchScreen',icon:'search1'},
+    {title:'Search',icon:'search1'},
     {title:'Saved',icon:'hearto', fa: true} 
   ])  
   const navlinksrow = navLinks?.map((link,i) => {
     return <TouchableOpacity 
       style={styles.navTab} 
-      onPress={() => {navigRef.current.navigate(link.title);setUpdate(prev => prev+1)}}
+      onPress={() => {
+        navigRef.current.navigate(link.title)
+        setUpdate(prev => prev+1)
+        scrollTopRef?.current?.scrollTo({x:0, y:0})
+      }}
       key={i}
     >
       {
