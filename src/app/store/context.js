@@ -12,6 +12,8 @@ const StoreContextProvider = (props) => {
   const [aUser, setAUser] = useState({})
   const [pageTitle, setPageTitle] = useState('Discover')
   const [logAuth, setLogAuth] = useState(true)
+  const [genresDisplayLimit, setGenresDisplayLimit] = useState(20)
+
   const scrollTopRef= useRef()
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const StoreContextProvider = (props) => {
   return (
     <StoreContext.Provider value={{
       activeNav, setActiveNav, user, myUser, setMyUser, aUser, setAUser, pageTitle, setPageTitle,
-      logAuth, setLogAuth, scrollTopRef
+      logAuth, setLogAuth, scrollTopRef, genresDisplayLimit, setGenresDisplayLimit
     }}>
       {props.children}
     </StoreContext.Provider>

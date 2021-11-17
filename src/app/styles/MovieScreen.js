@@ -23,12 +23,22 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center'
   },
+  pageTitleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    marginVertical: 20
+  },
   pageTitle: {
     fontSize: 20,
     color: '#fff',
-    marginLeft: 25,
     fontWeight: '600',
     maxWidth: 270
+  },
+  imdbRatingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   rating: {
     fontSize: 16,
@@ -67,6 +77,11 @@ export const styles = StyleSheet.create({
   },
   playIcon: {
     zIndex: 100
+  },
+  infoContainer: {
+    backgroundColor: Colors.dark,
+    top: -22,
+    borderRadius: 30
   },
   briefInfoContainer: {
     justifyContent: 'space-between',

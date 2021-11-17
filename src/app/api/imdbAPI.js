@@ -161,7 +161,7 @@ export const getActorIdByName = (name, setResult) => {
     headers: superAPIHeaders
   };
   axios.request(options).then(res => {
-    setResult(res.data.results[0].imdb_id)
+    setResult(res?.data?.results[0]?.imdb_id)
   }).catch(err => {
     console.error(err)
   })
@@ -184,6 +184,20 @@ export const mainSearch = (keyword, setResults) => {
   const options = {
     method: 'GET',
     url: `https://data-imdb1.p.rapidapi.com/movie/imdb_id/byTitle/${keyword}/`,
+    headers: superAPIHeaders
+  };
+  axios.request(options).then(res => {
+    setResults(res.data.results)
+  }).catch(err => {
+    console.error(err)
+  })
+}
+
+export const getMoviesByYearAndGenre = (genre, year, limit, setResults) => {
+  const options = {
+    method: 'GET',
+    url: `https://data-imdb1.p.rapidapi.com/movie/byYear/${year}/byGen/${genre}/`,
+    params: {page_size: limit},
     headers: superAPIHeaders
   };
   axios.request(options).then(res => {

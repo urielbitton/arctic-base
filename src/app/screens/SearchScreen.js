@@ -41,7 +41,7 @@ export default function SearchScreen() {
       <View style={styles.searchHeader}>
         <PageBar
           title="Search"
-          subtitle={(searchResults.length ?? '3,045,479') + " records available"}
+          subtitle={(searchResults.length > 0 ? searchResults.length : '3,045,479') + " records available"}
           setIsSheetVisible={setIsSheetVisible}
           paddingBottom={0}
         />

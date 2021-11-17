@@ -9,10 +9,12 @@ export default function Ratings(props) {
  
   return ( 
     <View style={styles.ratingsContainer}>
-      { Array.apply(null, { length: Math.floor(rating) }).map((el,i) => <>
-      <FontAwesome name="star" size={size} color={color} style={styles.star} />
-      <View style={{marginRight: 3}}></View>
-      </> ) } 
+      { 
+        Array.apply(null, { length: Math.floor(rating) }).map((el,i) => <>
+        <FontAwesome name="star" size={size} color={color} style={styles.star} key={i} />
+        <View style={{marginRight: 3}} key={i}></View>
+        </> ) 
+      } 
       { 
         rating % 1 > 0?
         <>
@@ -20,15 +22,15 @@ export default function Ratings(props) {
         <View style={{marginRight: 3}}></View>
         { Array.apply(null, { length: (highestRate-1)-Math.floor(rating) }).map((el,i) => ( 
           <>
-            <FontAwesome name="star-o" size={size} color={color} />
-            <View style={{marginRight: 3}}></View>
+            <FontAwesome name="star-o" size={size} color={color} key={i} />
+            <View style={{marginRight: 3}} key={i}></View>
           </>
         )) }
         </>:
         Array.apply(null, { length: highestRate-Math.floor(rating) }).map((el,i) => ( 
           <>
-            <FontAwesome name="star-o" size={size} color={color} /> 
-            <View style={{marginRight: 3}}></View>
+            <FontAwesome name="star-o" size={size} color={color} key={i} /> 
+            <View style={{marginRight: 3}} key={i}></View>
           </>
         ))
       }

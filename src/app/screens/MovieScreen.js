@@ -44,13 +44,13 @@ export default function MovieScreen(props) {
   ]
 
   const infoRender1 = infoArray?.slice(0,4).map(info => {
-    return <View style={styles.infoRow}>
+    return <View style={styles.infoRow} key={info.label}>
       <Text style={styles.infoLabel}>{info.label}</Text>
       <Text style={styles.infoText}>{info.text ?? "N/A"}</Text>
     </View>
   })
   const infoRender2 = infoArray?.slice(4).map(info => {
-    return <View style={styles.infoRow}>
+    return <View style={styles.infoRow} key={info.label}>
       <Text style={styles.infoLabel}>{info.label}</Text>
       <Text style={styles.infoText}>{info.text ?? "N/A"}</Text>
     </View>
@@ -62,15 +62,13 @@ export default function MovieScreen(props) {
   
   return (
     <Screen>
-      <View style={styles.trailerContainer}>
+      <TouchableOpacity 
+        style={styles.trailerContainer} 
+        onPress={() => Linking.openURL(`https://www.imdb.com/title/${imdbID}`)}
+      >
         <View style={styles.movieHeader}>
           <View style={styles.titleFlex}>
             <Fontisto name="angle-left" size={20} color="#fff" onPress={() => navigation.goBack()} />
-            <Text style={styles.pageTitle} numberOfLines={1}>{Title}</Text>
-          </View>
-          <View style={styles.titleFlex}>
-          <FontAwesome name="imdb" size={27} color={Colors.gold} />
-          <Text style={styles.rating}>{imdbRating}</Text>
           </View>
         </View>
         <LinearGradient
@@ -84,9 +82,6 @@ export default function MovieScreen(props) {
           style={styles.coverImg}
           source={{uri: Poster}}
         />
-        <TouchableOpacity style={styles.playCircle} onPress={() => Linking.openURL(`https://www.imdb.com/title/${imdbID}`)}>
-          <Ionicons name="play" size={50} color="#fff" style={styles.playIcon} />
-        </TouchableOpacity>
         <LinearGradient
           colors={['rgba(14, 19, 28,1)', 'transparent']}
           start={{ x: 0, y: 1 }}
@@ -94,30 +89,40 @@ export default function MovieScreen(props) {
           style={styles.gradientCoverBottom}
         >
         </LinearGradient>
-      </View>
-      <View style={styles.briefInfoContainer}>
-        {infoRender1}
-        <Text style={styles.plotText}>{Plot}</Text>
-      </View>
-      <View style={styles.seperatorContainer}>
-        <View style={styles.seperator}/>
-      </View>
-      <View style={styles.actorsContainer}>
-        <Text style={styles.rowTitle}>Actors</Text>
-        {actorsRender}
-      </View>
-      <View style={styles.actorsContainer}>
-        <Text style={styles.rowTitle}>Director</Text>
-        <CrewBubble crew={Director} subtitle="Director" />
-      </View>
-      <View style={styles.actorsContainer}>
-        <Text style={styles.rowTitle}>Writers</Text>
-        {crewRender}
-      </View>
-      <View style={styles.briefInfoContainer}>
-        <Text style={[styles.rowTitle, {paddingHorizontal: 0, marginBottom: 35}]}>More Info</Text>
-        {infoRender2}
-      </View>
+      </TouchableOpacity>
+      <View style={styles.infoContainer}>
+        <View style={styles.pageTitleContainer}>
+          <Text style={styles.pageTitle} numberOfLines={1}>{Title}</Text>
+          <View style={styles.imdbRatingContainer}>
+            <FontAwesome name="imdb" size={27} color={Colors.gold} />
+            <Text style={styles.rating}>{imdbRating}</Text>
+          </View>
+        </View>
+        <View style={styles.briefInfoContainer}>
+          {infoRender1}
+          <Text style={[styles.rowTitle, {paddingLeft: 0, marginVertical:5}]}>Plot</Text>
+          <Text style={styles.plotText}>{Plot}</Text>
+        </View>
+        <View style={styles.seperatorContainer}>
+          <View style={styles.seperator}/>
+        </View>
+        <View style={styles.actorsContainer}>
+          <Text style={styles.rowTitle}>Actors</Text>
+          {actorsRender}
+        </View>
+        <View style={styles.actorsContainer}>
+          <Text style={styles.rowTitle}>Director</Text>
+          <CrewBubble crew={Director} subtitle="Director" />
+        </View>
+        <View style={styles.actorsContainer}>
+          <Text style={styles.rowTitle}>Writers</Text>
+          {crewRender}
+        </View>
+        <View style={styles.briefInfoContainer}>
+          <Text style={[styles.rowTitle, {paddingHorizontal: 0, marginBottom: 35}]}>More Info</Text>
+          {infoRender2}
+        </View>
+      </View> 
     </Screen>
   )
 }

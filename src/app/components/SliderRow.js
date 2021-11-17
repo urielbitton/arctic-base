@@ -36,13 +36,10 @@ export default function SliderRow(props) {
 const styles = StyleSheet.create({ 
   header: {
     paddingHorizontal: 20,
-    marginBottom: 15,
+    marginBottom: 25,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
-  },
-  moviesRow: {
-
   },
   title: {
     fontSize: 19,

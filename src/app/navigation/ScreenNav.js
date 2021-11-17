@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from 'react'
-import { View, Text} from 'react-native'
+import { View} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { StoreContext } from '../store/context'
@@ -12,6 +12,8 @@ import {styles} from '../styles/ScreenNav'
 import MovieScreen from '../screens/MovieScreen'
 import ActorScreen from '../screens/ActorScreen'
 import SearchScreen from '../screens/SearchScreen'
+import Categories from '../screens/Categories'
+import GenreScreen from '../screens/GenreScreen'
 
 export default function ScreenNav(props) {
 
@@ -36,6 +38,8 @@ export default function ScreenNav(props) {
           <Stack.Screen name="MovieScreen" component={MovieScreen} />
           <Stack.Screen name="ActorScreen" component={ActorScreen} />
           <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="Categories" component={Categories} />
+          <Stack.Screen name="GenreScreen" component={GenreScreen} />
         </Stack.Navigator>
         <BottomNav navigRef={navigRef} />
       </NavigationContainer>

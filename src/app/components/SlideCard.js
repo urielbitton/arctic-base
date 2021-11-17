@@ -5,7 +5,7 @@ import { getOneMovie } from '../api/imdbAPI'
 
 export default function SlideCard(props) {
 
-  const {cardWidth, imgOnly} = props
+  const {cardWidth, imgOnly, height='100%', imgHeight=200, style} = props
   const {imdb_id} = props.film
   const [movie, setMovie] = useState({})
   const navigation = useNavigation() 
@@ -16,13 +16,13 @@ export default function SlideCard(props) {
 
   return (
     <TouchableOpacity 
-      style={[styles.slideCard, {width: cardWidth}]} 
+      style={[styles.slideCard, style, {width: cardWidth, height}]} 
       activeOpacity={0.7}
       onPress={() => navigation.navigate('MovieScreen', movie)}
     >
       <Image 
         source={{uri:movie?.Poster}} 
-        style={[styles.posterImg, {height: imgOnly ? "100%" : 200}]} 
+        style={[styles.posterImg, {height: imgOnly ? "100%" : imgHeight}]} 
       />
       <View style={{display: imgOnly ? "none" : "flex"}}>
         <Text style={styles.title} numberOfLines={1}>{movie?.Title}</Text>
@@ -34,7 +34,7 @@ export default function SlideCard(props) {
 
 const styles = StyleSheet.create({
   slideCard: {
-    height: '100%'
+    
   },
   posterImg: {
     width: '100%',
