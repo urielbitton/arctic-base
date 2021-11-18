@@ -6,16 +6,22 @@ import SlideCard from '../components/SlideCard'
 import { styles } from '../styles/GenreScreen'
 import {StoreContext} from '../store/context'
 import {searchYears} from '../api/filmsAPI'
+import BackBar from '../components/BackBar'
+import { Feather   } from '@expo/vector-icons'
 
 export default function GenreScreen(props) {
 
   const {genresDisplayLimit, setGenresDisplayLimit} = useContext(StoreContext)
   const {title} = props.route.params
   const [movieResults, setMovieResults] = useState([])
-  const [yearSelected, setYearSelected] = useState('')
+  const [yearSelected, setYearSelected] = useState(new Date().getFullYear())
 
   const ListHeaderComponent = <>
     <PageBar title={title} subtitle={movieResults.length + ' records available'} paddingHorizontal={0} style={{paddingTop:20, marginBottom: 10}} />
+    <BackBar 
+      barStyles={{paddingHorizontal: 0, paddingVertical: 10, marginTop: 10}}
+      secondIcon={<Feather name="info" size={24} color="#fff" />} 
+    />
     <View style={styles.toolbar}>
       <Text style={styles.toolbarTitle}>Filters</Text>
       <Picker
@@ -40,6 +46,7 @@ const yearsPickerItems = searchYears?.map((year,i) => {
   useEffect(() => {
     return() => setGenresDisplayLimit(20)
   },[])
+  console.log(movieResults)
 
   return (
     <FlatList

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Image, Text, View, TouchableOpacity, Linking } from 'react-native'
 import {getAltMovie} from '../api/imdbAPI'
-import YoutubePlayer from 'react-native-youtube-iframe';
 import Screen from '../components/Screen'
 import { styles } from '../styles/MovieScreen';
-import { Fontisto, FontAwesome, Ionicons    } from '@expo/vector-icons';
+import { Fontisto, FontAwesome } from '@expo/vector-icons';
 import Colors from '../utils/Colors';
 import {LinearGradient} from 'expo-linear-gradient'
 import { useNavigation } from '@react-navigation/native'
 import ActorBubble from '../components/ActorBubble';
 import CrewBubble from '../components/CrewBubble';
+import BackBar from '../components/BackBar';
 
 export default function MovieScreen(props) {
 
@@ -66,11 +66,12 @@ export default function MovieScreen(props) {
         style={styles.trailerContainer} 
         onPress={() => Linking.openURL(`https://www.imdb.com/title/${imdbID}`)}
       >
-        <View style={styles.movieHeader}>
-          <View style={styles.titleFlex}>
-            <Fontisto name="angle-left" size={20} color="#fff" onPress={() => navigation.goBack()} />
-          </View>
-        </View>
+        <BackBar 
+          secondIcon={
+          <FontAwesome name="bookmark-o" size={24} color="#fff" onPress={(e) => e.stopPropagation()} style={{padding: 5}} />
+          }
+          barPosition="absolute" 
+        />
         <LinearGradient
           colors={['rgba(14, 19, 28,1)', 'transparent']}
           start={{ x: 0, y: 0.05 }}

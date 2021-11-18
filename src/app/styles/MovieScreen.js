@@ -8,21 +8,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  movieHeader: {
-    position: 'absolute',
-    top: 10,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    zIndex: 20
-  },
-  titleFlex: {
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
   pageTitleContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

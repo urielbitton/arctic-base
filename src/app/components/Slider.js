@@ -13,7 +13,7 @@ export default function Slider(props) {
   const slideRender = slide?.map(el => {
     return (
       searchCard ?
-        <SearchBox coverImg={coverImg} genre={el.genre} year={el.year} key={el.genre}/> :
+        <SearchBox coverImg={coverImg} genre={el.genre} year={el} key={el.genre}/> :
       customCard ? 
         <SlideCardCustom film={el} cardWidth={cardWidth} imgOnly={imgOnly} key={el.imdbID} /> :
       actorCard ?

@@ -1420,6 +1420,13 @@
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.5.1.tgz#a64d1af3c62e3bb89576ec58af880980a562bf4e"
   integrity sha512-dZMzN0uAjwJXWYYAcnxIwXqRTZw3o14hGe7O6uhwjD1ZQWPVYA5lASgnNskEBra0knVBsOXB4KXg+HnlKewN/A==
 
+"@gregfrench/react-native-wheel-picker@^1.2.18":
+  version "1.2.18"
+  resolved "https://registry.yarnpkg.com/@gregfrench/react-native-wheel-picker/-/react-native-wheel-picker-1.2.18.tgz#3204d2705794f3863e4fea8771582a646ffe1320"
+  integrity sha512-crIND0v0dz0chcXmQLMKX4fDY2b/9Y3Lmb8yg3V/We12GdlIO68IWwF1TWYknrZ5LPPDpjqwYVTjr/rFRdnToA==
+  dependencies:
+    "@react-native-picker/picker" "^1.9.4"
+
 "@grpc/grpc-js@^1.3.2":
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.4.4.tgz#59336f13d77bc446bbdf2161564a32639288dc5b"
@@ -1678,6 +1685,11 @@
   version "0.1.11"
   resolved "https://registry.yarnpkg.com/@react-native-community/masked-view/-/masked-view-0.1.11.tgz#2f4c6e10bee0786abff4604e39a37ded6f3980ce"
   integrity sha512-rQfMIGSR/1r/SyN87+VD8xHHzDYeHaJq6elOSCAD+0iLagXkSI2pfA0LmSXP21uw5i3em7GkkRjfJ8wpqWXZNw==
+
+"@react-native-picker/picker@^1.9.4":
+  version "1.16.8"
+  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.16.8.tgz#2126ca54d4a5a3e9ea5e3f39ad1e6643f8e4b3d4"
+  integrity sha512-pacdQDX6V6EmjF+HoiIh6u++qx4mTK0WnhgUHRc01B+Qt5eoeUwseBqmqfTSXTx/aHDEd6PiIw7UGvKgFoqgFQ==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -2824,11 +2836,6 @@ event-target-shim@^5.0.0, event-target-shim@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/event-target-shim/-/event-target-shim-5.0.1.tgz#5d4d3ebdf9583d63a5333ce2deb7480ab2b05789"
   integrity sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
-
-events@^3.2.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/events/-/events-3.3.0.tgz#31a95ad0a924e2d2c419a813aeb2c4e878ea7400"
-  integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
 
 exec-sh@^0.3.2:
   version "0.3.6"
@@ -5182,13 +5189,6 @@ react-native-webview@^11.14.2:
   dependencies:
     escape-string-regexp "2.0.0"
     invariant "2.2.4"
-
-react-native-youtube-iframe@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-youtube-iframe/-/react-native-youtube-iframe-2.1.2.tgz#cd98208193c6beef426f749df7af39a929d544c2"
-  integrity sha512-JlR/rFMEGbbKevW6wdYjwlG7o2NL2jFfvjt9NIbc+wtThaqr2RlaS9O94tzzbU6+Js7UlpN8zJx38xsAtcA2DA==
-  dependencies:
-    events "^3.2.0"
 
 react-native@0.64.2:
   version "0.64.2"
