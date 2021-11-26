@@ -8,7 +8,8 @@ import ActorCard from './ActorCard';
 export default function Slider(props) {
   
   const {slide, selectedPage=0, width='100%', height, peek=65, pageMargin=15, 
-    mode="card", cardWidth, cardHeight, imgOnly, customCard, searchCard, coverImg, actorCard} = props
+    mode="card", cardWidth, cardHeight, imgOnly, customCard, searchCard, coverImg, 
+    actorCard} = props
 
   const slideRender = slide?.map(el => {
     return (

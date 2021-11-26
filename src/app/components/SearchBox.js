@@ -1,17 +1,23 @@
 import React from 'react'
 import { Image, TouchableOpacity, StyleSheet, View, Text } from 'react-native'
 import Colors from '../utils/Colors'
+import { useNavigation } from '@react-navigation/core'
 
 export default function SearchBox(props) {
 
-  const {coverImg, genre, year} = props
+  const {coverImg, genre:title, year} = props
+  const navigation = useNavigation()
 
   return (
-    <TouchableOpacity style={styles.searchBox} activeOpacity={0.75}>
+    <TouchableOpacity 
+      style={styles.searchBox} 
+      activeOpacity={0.75}
+      onPress={() => navigation.navigate("GenreScreen", {title})}
+    >
       <Image source={coverImg} style={styles.coverImg}/>
       <View style={styles.cover}></View>
-      <Text style={styles.title}>{genre??year}</Text>
-      <Text style={styles.overlay}>{genre}</Text>
+      <Text style={styles.title}>{title??year}</Text>
+      <Text style={styles.overlay}>{title}</Text>
     </TouchableOpacity>
   )
 }

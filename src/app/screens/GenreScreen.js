@@ -8,6 +8,7 @@ import {StoreContext} from '../store/context'
 import {searchYears} from '../api/filmsAPI'
 import BackBar from '../components/BackBar'
 import { Feather   } from '@expo/vector-icons'
+import { Input } from 'react-native-elements'
 
 export default function GenreScreen(props) {
 
@@ -15,38 +16,37 @@ export default function GenreScreen(props) {
   const {title} = props.route.params
   const [movieResults, setMovieResults] = useState([])
   const [yearSelected, setYearSelected] = useState(new Date().getFullYear())
+  const [yearText, setYearText] = useState('')
 
   const ListHeaderComponent = <>
-    <PageBar title={title} subtitle={movieResults.length + ' records available'} paddingHorizontal={0} style={{paddingTop:20, marginBottom: 10}} />
+    <PageBar title={title} subtitle={movieResults.length + ' records displayed'} paddingHorizontal={0} style={{paddingTop:20, marginBottom: 10}} />
     <BackBar 
       barStyles={{paddingHorizontal: 0, paddingVertical: 10, marginTop: 10}}
       secondIcon={<Feather name="info" size={24} color="#fff" />} 
     />
     <View style={styles.toolbar}>
-      <Text style={styles.toolbarTitle}>Filters</Text>
-      <Picker
-        selectedValue={yearSelected}
-        style={styles.inputPicker}
-        onValueChange={(itemValue, itemIndex) => setYearSelected(itemValue)}
-        itemStyle={styles.pickerItems}
-      >
-        {yearsPickerItems}
-      </Picker>
+      <View style={styles.toolbarTitle}>
+        <Text style={styles.toolbarTitleText}>Year:</Text>
+        <Text style={styles.yearSelected}>{yearSelected}</Text>
+      </View>
+      <Input 
+        placeholder="Filter by year"
+        inputStyle={styles.inputStyle}
+        inputContainerStyle={styles.inputContainerStyle}
+        containerStyle={styles.inputContainer}
+        onChangeText={(value) => setYearText(value)}
+        onSubmitEditing={() => setYearSelected(yearText)}
+      />
     </View>
   </>
 
-const yearsPickerItems = searchYears?.map((year,i) => {
-  return <Picker.Item label={year.year} value={year.year} key={year.year} />
-})
-
   useEffect(() => {
     getMoviesByYearAndGenre(title, yearSelected, genresDisplayLimit, setMovieResults)
-  },[title, genresDisplayLimit])
+  },[title, genresDisplayLimit, yearSelected])
 
   useEffect(() => {
     return() => setGenresDisplayLimit(20)
   },[])
-  console.log(movieResults)
 
   return (
     <FlatList
